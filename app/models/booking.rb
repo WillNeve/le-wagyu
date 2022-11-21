@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :bbq
   validates_presence_of :start_date, :end_date
-  validates :end_date_after_start_date
+  # validates :end_date_after_start_date
 
   private
 
