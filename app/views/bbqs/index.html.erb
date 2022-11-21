@@ -1,30 +1,32 @@
-<div class="bbq-container">
-  <% if user_signed_in? %>
-    <h1>Welcome <%= current_user.first_name.downcase.capitalize %>!</h1>
-  <% end %>
-  <% @bbqs.each do |bbq| %>
-  <div class="bbq-card">
-    <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
-    <div class="meta">
-      <div class="left">
-        <p><%= bbq.manufacturer %></p>
-        <p><%= bbq.price %></p>
-      </div>
-      <div class="right">
-        <% if bbq.reviews.empty? %>
-          <p>unrated ⭐</p>
-        <% else %>
-          <%# iterate through each review for a bbq and get average rating %>
-          <% bbq_ratings = 0 %>
-          <% bbq.reviews.each do |review| %>
-            <% bbq_ratings += review.rating  %>
+<div class="container">
+    <% if user_signed_in? %>
+      <h1>Welcome <%= current_user.first_name.downcase.capitalize %>!</h1>
+    <% end %>
+  <div class="bbq-container">
+    <% @bbqs.each do |bbq| %>
+    <div class="bbq-card">
+      <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
+      <div class="meta">
+        <div class="left">
+          <p><%= bbq.manufacturer %></p>
+          <p>£<%= bbq.price %></p>
+        </div>
+        <div class="right">
+          <% if bbq.reviews.empty? %>
+            <p>unrated ⭐</p>
+          <% else %>
+            <%# iterate through each review for a bbq and get average rating %>
+            <% bbq_ratings = 0 %>
+            <% bbq.reviews.each do |review| %>
+              <% bbq_ratings += review.rating  %>
+            <% end %>
+            <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length) %>
+            <p><%= bbq_ratings %> ⭐</p>
+            <p><%= bbq.location %></p>
           <% end %>
-          <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length) %>
-          <p><%= bbq_ratings %> ⭐</p>
-          <p><%= bbq.location %></p>
-        <% end %>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
