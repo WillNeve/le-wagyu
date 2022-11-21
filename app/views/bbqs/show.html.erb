@@ -1,2 +1,12 @@
 
 <h1><%= @bbq.title %></h1>
+<h2>Reviews:</h2>
+<ul>
+<% @bbq.reviews.each do |review| %>
+  <div class="rating-card">
+    <p><strong><%= review.user.username %></strong></p>
+    <p><%= review.comment %></p>
+    <p><%= review.rating %></p>
+  </div>
+<% end %>
+</ul>

@@ -19,7 +19,7 @@
           <% bbq.reviews.each do |review| %>
             <% bbq_ratings += review.rating  %>
           <% end %>
-          <% bbq_ratings = (bbq_ratings / bbq.reviews.length) %>
+          <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length) %>
           <p><%= bbq_ratings %> ⭐</p>
           <p><%= bbq.location %></p>
         <% end %>
