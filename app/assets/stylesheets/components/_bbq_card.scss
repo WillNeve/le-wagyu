@@ -1,3 +1,10 @@
+.bbq-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 15px;
+}
+
 .bbq-card {
   display: flex;
   flex-direction: column;
@@ -22,6 +29,7 @@
     border: 2px solid red;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 50%;
   }
   .right {
