@@ -27,6 +27,6 @@ class BbqsController < ApplicationController
   private
 
   def bbq_params
-    params.require(:bbq).permit(:title, :description, :photos, :price, :manufacturer, :location)
+    params.require(:bbq).permit(:title, :description, :price, :manufacturer, :location, photos: [])
   end
 end

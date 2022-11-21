@@ -4,7 +4,7 @@
   <% end %>
   <% @bbqs.each do |bbq| %>
   <div class="bbq-card">
-    <img src="link activestorage reference first photo" alt="bbq-picture">
+    <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
     <div class="meta">
       <div class="left">
         <p><%= bbq.manufacturer %></p>
