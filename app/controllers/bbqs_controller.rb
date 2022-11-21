@@ -10,13 +10,13 @@ class BbqsController < ApplicationController
 
   def new
     @bbq = Bbq.new
-    # @user = ???
+    @user = current_user
   end
 
   def create
     @bbq = Bbq.new(bbq_params)
-    raise
-    # @bbq.user = @user
+    @user = current_user
+    @bbq.user = @user
     if @bbq.save
       redirect_to bbq_path(@bbq)
     else

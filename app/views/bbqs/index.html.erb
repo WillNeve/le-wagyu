@@ -1,4 +1,7 @@
 <div class="bbq-container">
+  <% if current_user %>
+    <h1>Welcome <%= current_user.first_name.downcase.capitalize %>!</h1>
+  <% end %>
   <% @bbqs.each do |bbq| %>
     <%= @bbq.title %>
   <% end %>
