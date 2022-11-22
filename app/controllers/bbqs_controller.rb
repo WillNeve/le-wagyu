@@ -8,10 +8,13 @@ class BbqsController < ApplicationController
       case params[:filter]
       when 'brand'
         @bbqs = Bbq.order(:manufacturer)
+        @filter = 'brand'
       when 'priceA'
         @bbqs = Bbq.order('price ASC')
+        @filter = 'priceA'
       when 'priceD'
         @bbqs = Bbq.order('price DESC')
+        @filter = 'priceD'
       end
     else
       @bbqs = Bbq.all

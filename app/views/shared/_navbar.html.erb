@@ -8,11 +8,20 @@
 
     <% if @index %>
       <div class="filter-bar">
-        <p>Filter By</p>
+        <p>Filter By:</p>
+        <% class1 = ''; class2 = ''; class3 = '' %>
+        <% case @filter %>
+        <% when 'brand' %>
+        <% class1 = 'active' %>
+        <% when 'priceA' %>
+        <% class2 = 'active' %>
+        <% when 'priceD' %>
+        <% class3 = 'active' %>
+        <% end %>
         <div class="filters">
-          <a href="/bbqs?filter=brand">Brand</a>
-          <a href="/bbqs?filter=priceA">Price Asc.</a>
-          <a href="/bbqs?filter=priceD">Price Desc.</a>
+          <a href="/bbqs?filter=brand" class=<%= class1 %> >Brand</a>
+          <a href="/bbqs?filter=priceA" class=<%= class2 %> >Price Asc.</a>
+          <a href="/bbqs?filter=priceD" class=<%= class3 %> >Price Desc.</a>
         </div>
       </div>
       <% end %>
