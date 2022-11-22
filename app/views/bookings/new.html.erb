@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for [@bbq, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>

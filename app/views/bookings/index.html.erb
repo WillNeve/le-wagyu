@@ -1,0 +1,15 @@
+<div class="container">
+   <h2>Your bookings :</h2>
+
+  <% @bookings.each do |booking| %>
+    <div class="rating-card">
+      <h3>You booked</h3>
+      <p><strong><%= booking.bbq_id(@bbq.title) %></strong></p>
+      <h4>from</h4>
+      <p><%= booking.start_date %></p>
+      <h4>to</h4>
+      <p><%= booking.end_date %></p>
+    </div>
+  <% end %>
+  </ul>
+</div>
