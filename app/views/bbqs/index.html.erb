@@ -14,9 +14,9 @@
       <div class="meta">
 
         <div class="first_element d-flex justify-content-between">
-          <h5 class="card-title"><%= bbq.manufacturer%></h5>
+          <h5 class="card-title"><%= bbq.manufacturer.capitalize%></h5>
           <% if bbq.reviews.empty? %>
-            <p>unrated ⭐</p>
+            <p>new ★</p>
           <% else %>
             <%# iterate through each review for a bbq and get average rating %>
             <% bbq_ratings = 0 %>
@@ -24,14 +24,14 @@
               <% bbq_ratings += review.rating  %>
             <% end %>
             <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length) %>
-            <p><%= bbq_ratings %> ⭐</p>
-            <p><%= bbq.location %></p>
+            <p><%= bbq_ratings %> ★</p>
           <% end %>
         </div>
 
         <div class="second_element">
-          <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title%></h6>
-          <p>$<%= bbq.price %></p>
+          <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title.capitalize%></h6>
+          <h6 class= "text-muted"><%= bbq.location.capitalize %></h6>
+          <p>$<%= bbq.price %>  /day</p>
         </div>
 
       </div>
