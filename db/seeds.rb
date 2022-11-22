@@ -12,6 +12,11 @@ puts "Cleaning database"
 
 puts "Creating reviews"
 
+user_params = { first_name: "Bob", last_name: "Grills", username: "bobgyrlz",
+                email: "bob.grills@gmail.com", password: '123123', password_confirmation: '123123' }
+user = User.new(user_params)
+user.save
+
 # create_table "reviews", force: :cascade do |t|
 #   t.integer "rating"
 #   t.text "comment"
@@ -22,15 +27,11 @@ puts "Creating reviews"
 #   t.index ["bbq_id"], name: "index_reviews_on_bbq_id"
 #   t.index ["user_id"], name: "index_reviews_on_user_id"
 # end
-
-user = User.new(first_name: 'test', last_name: 'test', username: 'test', password: 'test', email: 'test@test.com')
-user.save
-
 50.times do
   review = Review.create(
     comment: Faker::Restaurant.description,
     rating: rand(1..5),
-    user_id: 1,
+    user_id: user.id,
     bbq_id: rand(1..15)
   )
   puts "Review for bbq: #{review.id} has been created"
@@ -51,7 +52,7 @@ end
     description: Faker::TvShows::BigBangTheory.quote,
     location: Faker::Address.city,
     manufacturer: Faker::Company.name,
-    user_id: 1
+    user_id: user.id
   )
   bbq.save
   puts bbq.valid?

@@ -8,6 +8,7 @@
   h2{
   color: $wagyu-red !important;
   align-items: center;
+  font-weight: bold;
   }
   .navbar-brand {
     display: flex;
@@ -19,6 +20,7 @@
     width: 40px;
     height: 40px;
     object-fit: cover;
+    background-color: white;
   }
   .navbar-collapse {
     flex-grow: 0;
