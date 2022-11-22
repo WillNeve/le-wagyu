@@ -12,9 +12,14 @@
         <img src="https://cdn.shopify.com/s/files/1/0208/7750/8672/products/XS6073_LS_1600_1_opt_1024x1024@2x.jpg?v=1649448712" alt="">
       <% end %>
       <div class="meta">
-
+      <%# shorten manufacturer to 20 chars %>
+      <% if bbq.manufacturer.length > 20 %>
+        <% manufacturer_formatted = "#{bbq.manufacturer.first(20)} ...".capitalize %>
+      <% else %>
+        <% manufacturer_formatted = bbq.manufacturer.capitalize %>
+      <% end %>
         <div class="first_element d-flex justify-content-between">
-          <h5 class="card-title"><%= bbq.manufacturer.capitalize%></h5>
+          <h5 class="card-title"><%= manufacturer_formatted%></h5>
           <% if bbq.reviews.empty? %>
             <p>new ★</p>
           <% else %>

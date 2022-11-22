@@ -1,7 +1,8 @@
 .bbq-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
+  justify-items: center;
   gap: 15px;
   margin-top: 35px;
 }
@@ -63,4 +64,23 @@
 .text-muted {
   margin-left: 3.5px;
   line-height: 0.75em;
+}
+
+
+@media (min-width: 550px) {
+  .bbq-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .bbq-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bbq-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
