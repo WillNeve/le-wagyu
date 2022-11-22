@@ -1,8 +1,18 @@
 class BookingsController < ApplicationController
   # new create destroy edit update
+
+  def index
+    @bookings = Booking.all.where(@user == current_user)
+  end
+
   def new
     @booking = Booking.new
     @bbq = Bbq.find(params[:bbq_id])
+  end
+
+  def show
+    @user = current_user
+    @booking = Booking.new(params[:booking_id])
   end
 
   def create
@@ -12,22 +22,25 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.bbq = @bbq
     if @booking.save
-      redirect_to root_path
+      @booking_changed = true
+      @booking_message = 'Nice Your booking has been created!'
+      redirect_to booking_path(@booking, @booking_message)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    # @user = current_user
     @booking = Booking.find(params[:id])
-    return unless @booking.user == current_user
   end
 
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      flash[:success] = "Your booking has been updated!"
-      redirect_to bbq_booking_path(current_user)
+      @booking_changed = true
+      @booking_message = 'Nice Your booking has been created!'
+      redirect_to booking_path(@booking, @booking_message)
     else
       render :edit, status: :unprocessable_entite
     end
