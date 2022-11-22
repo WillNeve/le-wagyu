@@ -7,12 +7,13 @@
   margin-top: 35px;
 }
 
-.bbq-card {
-  display: flex;
-  flex-direction: column;
+#bbq-card {
+  display: block;
   width: 300px;
   height: 400px;
   align-items: center;
+  text-decoration: none;
+  color: black;
 
   h5 {
     font-weight: bold;
@@ -21,17 +22,22 @@
   h6 {
     font-size: medium;
     opacity: .5;
+    i {
+      margin-right: 5px;
+      font-size: 0.8rem;
+      transform: translateY(-1.7px);
+    }
   }
 
 
 
   img {
     border-radius: 10px;
-    height: 100%;
+    height: 70%;
     width: 100%;
   }
   .meta {
-    height: 40%;
+    height: 30%;
     width: 100%;
     flex-direction: row;
   }

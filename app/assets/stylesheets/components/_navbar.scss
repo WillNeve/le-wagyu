@@ -8,6 +8,7 @@
   h2{
   color: $wagyu-red !important;
   align-items: center;
+  font-weight: bold;
   }
 
   .fixed-nav-bar { position: fixed; top: 0; left: 0; z-index: 9999 }
@@ -22,6 +23,7 @@
     width: 40px;
     height: 40px;
     object-fit: cover;
+    background-color: white;
   }
   .navbar-collapse {
     flex-grow: 0;

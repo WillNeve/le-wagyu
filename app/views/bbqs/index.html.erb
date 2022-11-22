@@ -5,7 +5,7 @@
 
   <div class="bbq-container">
     <% @bbqs.each do |bbq| %>
-    <div class="bbq-card">
+    <a id="bbq-card" href='bbqs/<%=bbq.id%>'>
       <% if bbq.photos[0] %>
         <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
       <% else %>
@@ -35,12 +35,12 @@
 
         <div class="second_element">
           <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title.capitalize%></h6>
-          <h6 class= "text-muted"><%= bbq.location.capitalize %></h6>
-          <p>$<%= bbq.price %><em class='soft-text'>/day</em></p>
+          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.location.capitalize %></h6>
+          <p>£<%= bbq.price %><em class='soft-text'>/day</em></p>
         </div>
 
       </div>
-    </div>
+    </a>
     <% end %>
   </div>
 </div>
