@@ -1,12 +1,24 @@
+
 <div class="container">
   <h1><%= @bbq.title %></h1>
+
   <h2>Reviews:</h2>
+    <%= link_to 'Write a review', new_bbq_review_path(@bbq), class: 'btn btn-primary' %>
   <ul>
   <% @bbq.reviews.each do |review| %>
-    <div class="rating-card">
-      <p><strong><%= review.user.username %></strong></p>
-      <p><%= review.comment %></p>
-      <p><%= review.rating %></p>
+
+    <div class="rating-card" class="mt-4" class="p-4">
+      <blockquote class="blockquote">
+        <% rating_stars = [] %>
+        <% review.rating.times do %>
+          <% rating_stars << '<i class="fa-solid fa-fire-flame-curved"></i>' %>
+        <% end %>
+        <p>Rating: <%= rating_stars.join('').html_safe %></p>
+        <p><%= review.comment %></p>
+        <div class="text-right">
+          <footer class="blockquote-footer"><%= review.user.first_name %> <%= review.user.last_name %>, <cite><%= review.created_at %></cite></footer>
+        </div>
+      </blockquote>
     </div>
   <% end %>
   </ul>
