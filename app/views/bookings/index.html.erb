@@ -1,14 +1,12 @@
 <div class="container">
-   <h2>Your bookings :</h2>
-
   <% @bookings.each do |booking| %>
     <div class="rating-card">
-      <h3>You booked</h3>
-      <p><strong><%= booking.bbq_id(@bbq.title) %></strong></p>
+      <h3>Your booking <em>(ref: #<%= booking.id %>)</em></h3>
+      <h2><strong><%= Bbq.find(booking.bbq_id).title %></strong></h2>
       <h4>from</h4>
-      <p><%= booking.start_date %></p>
+      <h3><%= booking.start_date %></h3>
       <h4>to</h4>
-      <p><%= booking.end_date %></p>
+      <h3><%= booking.end_date %></h3>
     </div>
   <% end %>
   </ul>
