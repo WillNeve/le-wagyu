@@ -46,7 +46,7 @@ end
 
 15.times do
   bbq = Bbq.new(
-    price: rand(1..1000),
+    price: rand(1..50),
     title: Faker::Company.buzzword,
     description: Faker::TvShows::BigBangTheory.quote,
     location: Faker::Address.city,
