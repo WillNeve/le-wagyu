@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   # new create destroy edit update
 
   def index
-    @bookings = Booking.all.where(@user == current_user)
+    @bookings = Booking.all.where('user_id = ?', current_user.id)
   end
 
   def new
