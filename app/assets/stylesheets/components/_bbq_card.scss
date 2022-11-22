@@ -19,8 +19,10 @@
 
   h6 {
     font-size: medium;
-
+    opacity: .5;
   }
+
+
 
   img {
     border-radius: 10px;
@@ -37,6 +39,7 @@
 .first_element {
   display: flex;
   margin-top: 10px;
+  margin-right: 3.5px;
   .p{
     font-size: 12px;
   }
@@ -44,7 +47,15 @@
 
 .second_element{
   p{
+    margin-left: 3.5px;
     font-weight:bold;
     text-decoration: underline;
+    margin-left: 3.5px;
+  line-height: 0.75em;
   }
+}
+
+.text-muted {
+  margin-left: 3.5px;
+  line-height: 0.75em;
 }
