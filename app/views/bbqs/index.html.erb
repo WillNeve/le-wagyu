@@ -28,7 +28,7 @@
             <% bbq.reviews.each do |review| %>
               <% bbq_ratings += review.rating  %>
             <% end %>
-            <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length) %>
+            <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length).round(1) %>
             <p><%= bbq_ratings %> ★</p>
           <% end %>
         </div>
