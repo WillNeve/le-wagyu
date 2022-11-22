@@ -2,11 +2,15 @@
     <% if user_signed_in? %>
       <h1>Welcome <%= current_user.first_name.downcase.capitalize %>!</h1>
     <% end %>
-    
+
   <div class="bbq-container">
     <% @bbqs.each do |bbq| %>
     <div class="bbq-card">
-      <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
+      <% if bbq.photos[0] %>
+        <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
+      <% else %>
+        <img src="https://cdn.shopify.com/s/files/1/0208/7750/8672/products/XS6073_LS_1600_1_opt_1024x1024@2x.jpg?v=1649448712" alt="">
+      <% end %>
       <div class="meta">
 
         <div class="first_element d-flex justify-content-between">

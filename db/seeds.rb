@@ -23,6 +23,9 @@ puts "Creating reviews"
 #   t.index ["user_id"], name: "index_reviews_on_user_id"
 # end
 
+user = User.new(first_name: 'test', last_name: 'test', username: 'test', password: 'test', email: 'test@test.com')
+user.save
+
 50.times do
   review = Review.create(
     comment: Faker::Restaurant.description,
@@ -42,13 +45,16 @@ end
 #   t.bigint "user_id", null: false
 
 15.times do
-  bbq = Bbq.create(
+  bbq = Bbq.new(
     price: rand(1..1000),
-    title: Faker::JapaneseMedia::CowboyBebop.episode,
+    title: Faker::Company.buzzword,
     description: Faker::TvShows::BigBangTheory.quote,
     location: Faker::Address.city,
-    manufacturer: Faker::Company.name
+    manufacturer: Faker::Company.name,
+    user_id: 1
   )
+  bbq.save
+  puts bbq.valid?
   puts "BBQ: #{bbq.id} has been created"
 end
 
