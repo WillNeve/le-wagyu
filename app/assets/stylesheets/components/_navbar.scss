@@ -9,6 +9,9 @@
   color: $wagyu-red !important;
   align-items: center;
   }
+
+  .fixed-nav-bar { position: fixed; top: 0; left: 0; z-index: 9999 }
+
   .navbar-brand {
     display: flex;
     flex-direction: row;
