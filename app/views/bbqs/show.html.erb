@@ -36,7 +36,12 @@
         <ul>
         <% @bbq.reviews.each do |review| %>
           <div class="rating-card" class="mt-4" class="p-4">
-           <p>Rating: <%= rating_stars.join('🔥').html_safe %></p>
+          <% fire_number = review.rating %>
+          <% rating_fire = []%>
+          <% fire_number.times do  %>
+            <% rating_fire << '🔥' %>
+          <% end %>
+           <p>Rating: <%= rating_fire.join %></p>
         </div>
         <blockquote class="blockquote">
         <p>"<%= review.comment %>"</p>
