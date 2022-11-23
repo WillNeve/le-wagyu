@@ -18,29 +18,13 @@ Bbq.destroy_all
 
 puts "Creating Users"
 
-# user = User.create(first_name: 'Tom', last_name: 'Wagon', username: 'TomWagon', password: 'test', email: 'TomWagon@test.com')
-# user1 = User.create(first_name: 'Wil', last_name: 'Wagon', username: 'WilWagon', password: 'test', email: 'WilWagon@test.com')
-# user2 = User.create(first_name: 'Ben', last_name: 'Wagon', username: 'BenWagon', password: 'test', email: 'BenWagon@test.com')
-# user3 = User.create(first_name: 'Vic', last_name: 'Wagon', username: 'VicWagon', password: 'test', email: 'VicWagon@test.com')
-
 puts "Creating BBQs"
 
-# create_table "bbqs", force: :cascade do |t|
-#   t.float "price"
-#   t.string "title"
-#   t.text "description"
-#   t.string "location"
-#   t.string "manufacturer"
-#   t.bigint "user_id", null: false
-#   t.boolean "active"
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["user_id"], name: "index_bbqs_on_user_id"
-# end
+user_params = { first_name: "Bob", last_name: "Grills", username: "bobgyrlz",
+                email: "bob.grills@gmail.com", password: '123123', password_confirmation: '123123' }
+user = User.new(user_params)
+user.save
 
-# validates_presence_of :title, :price, :description, :location, :manufacturer
-# validates :description, length: { minimum: 6, maximum: 200 }
-# validates :title, length: { minimum: 6, maximum: 50 }
 
 
   filepath = "/root/code/Husemeyer/le-wagyu/db/bbqseeds.csv"
@@ -80,19 +64,5 @@ puts "Creating BBQs"
   )
   puts "Review for bbq: #{review.id} has been created"
 end
-
-# 15.times do
-#   bbq = Bbq.new(
-#     price: rand(1..1000),
-#     title: Faker::Company.buzzword,
-#     description: Faker::TvShows::BigBangTheory.quote,
-#     location: Faker::Address.city,
-#     manufacturer: Faker::Company.name,
-#     user_id: 1
-#   )
-#   bbq.save
-#   puts bbq.valid?
-#   puts "BBQ: #{bbq.id} has been created"
-# end
 
 puts 'Completed'

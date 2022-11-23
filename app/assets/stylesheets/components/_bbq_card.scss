@@ -1,17 +1,19 @@
 .bbq-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
+  justify-items: center;
   gap: 15px;
   margin-top: 35px;
 }
 
-.bbq-card {
-  display: flex;
-  flex-direction: column;
+#bbq-card {
+  display: block;
   width: 300px;
   height: 400px;
   align-items: center;
+  text-decoration: none;
+  color: black;
 
   h5 {
     font-weight: bold;
@@ -19,24 +21,37 @@
 
   h6 {
     font-size: medium;
-
+    opacity: .5;
+    i {
+      margin-right: 5px;
+      font-size: 0.8rem;
+      transform: translateY(-1.7px);
+    }
   }
+
+
 
   img {
     border-radius: 10px;
-    height: 100%;
+    height: 70%;
     width: 100%;
   }
   .meta {
-    height: 40%;
+    height: 30%;
     width: 100%;
     flex-direction: row;
+  }
+  .soft-text {
+    font-weight: 400 !important;
+    font-style: normal !important;
+    opacity: 0.9;
   }
 }
 
 .first_element {
   display: flex;
   margin-top: 10px;
+  margin-right: 3.5px;
   .p{
     font-size: 12px;
   }
@@ -44,7 +59,34 @@
 
 .second_element{
   p{
+    margin-left: 3.5px;
     font-weight:bold;
     text-decoration: underline;
+    margin-left: 3.5px;
+  line-height: 0.75em;
+  }
+}
+
+.text-muted {
+  margin-left: 3.5px;
+  line-height: 0.75em;
+}
+
+
+@media (min-width: 550px) {
+  .bbq-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .bbq-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bbq-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

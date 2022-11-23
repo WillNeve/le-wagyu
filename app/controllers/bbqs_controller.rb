@@ -1,9 +1,24 @@
 class BbqsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    @bbqs = Bbq.all
+
     @index = true # this passes a variable to confirm to the navbar we are on index
                   # so that it can show us the filter by bar
+    if params[:filter]
+      case params[:filter]
+      when 'brand'
+        @bbqs = Bbq.order(:manufacturer)
+        @filter = 'brand'
+      when 'priceA'
+        @bbqs = Bbq.order('price ASC')
+        @filter = 'priceA'
+      when 'priceD'
+        @bbqs = Bbq.order('price DESC')
+        @filter = 'priceD'
+      end
+    else
+      @bbqs = Bbq.all
+    end
   end
 
   def show

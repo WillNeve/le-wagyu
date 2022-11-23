@@ -1,6 +1,7 @@
 
 <div class="container">
   <h1><%= @bbq.title %></h1>
+  <%= link_to 'Book this BBQ', new_bbq_booking_path(@bbq), class: 'btn btn-primary' %>
 
   <h2>Reviews:</h2>
     <%= link_to 'Write a review', new_bbq_review_path(@bbq), class: 'btn btn-primary' %>

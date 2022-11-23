@@ -1,41 +1,46 @@
 <div class="container">
     <% if user_signed_in? %>
-      <h1>Welcome <%= current_user.first_name.downcase.capitalize %>!</h1>
+      <h1>Hey <%= current_user.first_name.downcase.capitalize %>, looking for a <em class='hot'>hot</em> date?</h1>
     <% end %>
 
   <div class="bbq-container">
     <% @bbqs.each do |bbq| %>
-    <div class="bbq-card">
+    <a id="bbq-card" href='bbqs/<%=bbq.id%>'>
       <% if bbq.photos[0] %>
         <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
       <% else %>
         <img src="https://cdn.shopify.com/s/files/1/0208/7750/8672/products/XS6073_LS_1600_1_opt_1024x1024@2x.jpg?v=1649448712" alt="">
       <% end %>
       <div class="meta">
-
+      <%# shorten manufacturer to 20 chars %>
+      <% if bbq.manufacturer.length > 20 %>
+        <% manufacturer_formatted = "#{bbq.manufacturer.first(20)} ...".capitalize %>
+      <% else %>
+        <% manufacturer_formatted = bbq.manufacturer.capitalize %>
+      <% end %>
         <div class="first_element d-flex justify-content-between">
-          <h5 class="card-title"><%= bbq.manufacturer%></h5>
+          <h5 class="card-title"><%= manufacturer_formatted%></h5>
           <% if bbq.reviews.empty? %>
-            <p>unrated ⭐</p>
+            <p>new ★</p>
           <% else %>
             <%# iterate through each review for a bbq and get average rating %>
             <% bbq_ratings = 0 %>
             <% bbq.reviews.each do |review| %>
               <% bbq_ratings += review.rating  %>
             <% end %>
-            <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length) %>
-            <p><%= bbq_ratings %> ⭐</p>
-            <p><%= bbq.location %></p>
+            <% bbq_ratings = (bbq_ratings.to_f / bbq.reviews.length).round(1) %>
+            <p><%= bbq_ratings %> ★</p>
           <% end %>
         </div>
 
         <div class="second_element">
-          <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title%></h6>
-          <p>$<%= bbq.price %></p>
+          <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title.capitalize%></h6>
+          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.location.capitalize %></h6>
+          <p>£<%= bbq.price %><em class='soft-text'>/day</em></p>
         </div>
 
       </div>
-    </div>
+    </a>
     <% end %>
   </div>
 </div>
