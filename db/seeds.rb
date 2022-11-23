@@ -5,15 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require 'faker'
 require 'csv'
 require 'open-uri'
-# require_relative '/bbqseeds.csv'
-# csv.open(filepath, "wb")
 
-puts "Cleaning database"
-Review.destroy_all
-Bbq.destroy_all
+# puts "Cleaning database"
+# Review.destroy_all
+# Bbq.destroy_all
 # User.destroy_all
 
 puts "Creating Users"
@@ -26,31 +23,30 @@ user = User.new(user_params)
 user.save
 
 
-
-  filepath = "/root/code/Husemeyer/le-wagyu/db/bbqseeds.csv"
+  filepath = File.join(Rails.root, 'db', 'bbqseeds.csv')
   user = User.first
-  CSV.foreach(filepath, headers: :first_row) do |row|
-  bbq = Bbq.create!(
-    price: row[2],
-    title: row[0],
-    description: row[1],
-    location: row[3],
-    manufacturer: row[4],
-    user: user
-    # fuel_type: row[9],
-    # cooking_area: row[10],
-    # power: row[11],
-    # weight: row[12],
-    # type: row[13]
-  )
-  image_1 = URI.open(row[6])
-  image_2 = URI.open(row[7])
-  image_3 = URI.open(row[8])
-  bbq.photos.attach(io: image_1, filename: "bbq_#{bbq.id}_1.png", content_type: "image/png")
 
-  # bbq.save
-  puts bbq.valid?
-  puts "BBQ: #{bbq.id} has been created"
+  CSV.foreach(filepath, headers: :first_row) do |row|
+    bbq = Bbq.create!(
+      price: row[2].gsub('“', '').gsub('”', '').to_f,
+      title: row[0].gsub('“', '').gsub('”', ''),
+      description: row[1].gsub('“', '').gsub('”', ''),
+      location: row[3].gsub('“', '').gsub('”', ''),
+      manufacturer: row[4].gsub('“', '').gsub('”', ''),
+      user: user
+      # fuel_type: row[9],
+      # cooking_area: row[10],
+      # power: row[11],
+      # weight: row[12],
+      # type: row[13]
+    )
+
+    image_1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
+    # image_2 = URI.open(row[7])
+    # image_3 = URI.open(row[8])
+    bbq.photos.attach(io: image_1, filename: "bbq_#{bbq.id}_1.png", content_type: "image/jpg")
+    puts bbq.valid?
+    puts "BBQ: #{bbq.id} has been created"
   end
 # end
 #   puts "Creating Reviews"
