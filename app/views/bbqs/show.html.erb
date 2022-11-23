@@ -45,8 +45,8 @@
             <% end %>
             <p>Rating: <%= rating_fire.join %></p>
           </div>
-        <blockquote class="blockquote">
-        <p>"<%= review.comment %>"</p>
+        <blockquote id="blockquote">
+          <p>"<%= review.comment %>"</p>
         </blockquote>
         <footer class="blockquote-footer" class="text-right"><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></footer>
 
