@@ -1,33 +1,53 @@
 
 <div class="container">
-  <h1><%= @bbq.title %></h1>
-  <%= link_to 'Book this BBQ', new_bbq_booking_path(@bbq), class: 'btn btn-primary' %>
-
-  <h2>Reviews:</h2>
-    <%= link_to 'Write a review', new_bbq_review_path(@bbq), class: 'btn btn-primary' %>
-  <ul>
-  <% @bbq.reviews.each do |review| %>
 
 
 
-        <% rating_stars = [] %>
-        <% review.rating.times do %>
-          <% rating_stars << '' %>
+
+  <div class="bbq_card_show">
+    <h2><%= @bbq.manufacturer%> - <%= @bbq.title%></h2>
+    <div class="under-title-bar">
+      <% if @bbq.reviews.empty? %>
+            <% bbq_ratings = "New" %>
+        <% else %>
+            <% bbq_ratings = 0 %>
+            <% @bbq.reviews.each do |review| %>
+              <% bbq_ratings += review.rating  %>
+            <% end %>
+            <% bbq_ratings = (bbq_ratings.to_f / @bbq.reviews.length).round(1)%>
         <% end %>
+      <span >★ <%= bbq_ratings%>  ·</span>
+      <span class="text_location text-muted"><u><%= @bbq.location%></u></span>
+    </div>
+  </div>
+     <div class="bbq-img-container">
+          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg"  class="img1" alt="">
+          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg" class="img2" alt="">
+          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg" class="img3" alt="">
+    </div>
+  <div class="meta-container">
+    <div class="booking-card">
+      <%= link_to 'Book this BBQ', new_bbq_booking_path(@bbq), class: 'btn btn-primary' %>
+    </div>
 
-        <div class="rating-card" class="pb-4">
-          <p>Rating: <%= rating_stars.join('🔥').html_safe %></p>
+    <div class="review-card">
+      <h2>Reviews:</h2>
+      <%= link_to 'Write a review', new_bbq_review_path(@bbq), class: 'btn btn-primary' %>
+        <ul>
+        <% @bbq.reviews.each do |review| %>
+          <div class="rating-card" class="mt-4" class="p-4">
+           <p>Rating: <%= rating_stars.join('🔥').html_safe %></p>
         </div>
         <blockquote class="blockquote">
         <p>"<%= review.comment %>"</p>
         </blockquote>
         <footer class="blockquote-footer" class="text-right"><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></footer>
 
-        <br>
-
-
-  <% end %>
-  </ul>
+          </div>
+        <% end %>
+        </ul>
+    </div>
+  </div>
 </div>
 
 <%# <i class="fa-solid fa-fire-flame-curved"></i> %>
