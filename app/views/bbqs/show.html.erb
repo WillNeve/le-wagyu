@@ -1,9 +1,5 @@
 
 <div class="container">
-
-
-
-
   <div class="bbq_card_show">
     <h2><%= @bbq.manufacturer%> - <%= @bbq.title%></h2>
     <div class="under-title-bar">
@@ -20,39 +16,36 @@
       <span class="text_location text-muted"><u><%= @bbq.location%></u></span>
     </div>
   </div>
+
      <div class="bbq-img-container">
-          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg"  class="img1" alt="">
-          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg" class="img2" alt="">
-          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg" class="img3" alt="">
+          <img src="<%=cl_image_path @bbq.photos[0].key %>"  class="img1" alt="">
+          <img src="<%=cl_image_path @bbq.photos[1].key %>"  class="img2" alt="">
+          <img src="<%=cl_image_path @bbq.photos[2].key %>"  class="img3" alt="">
     </div>
-  <div class="meta-container">
+
     <div class="booking-card">
       <%= link_to 'Book this BBQ', new_bbq_booking_path(@bbq), class: 'btn btn-primary' %>
     </div>
 
-    <div class="review-card">
       <h2>Reviews:</h2>
       <%= link_to 'Write a review', new_bbq_review_path(@bbq), class: 'btn btn-primary' %>
-        <ul>
+      <div class="meta-container">
         <% @bbq.reviews.each do |review| %>
           <div class="rating-card" class="mt-4" class="p-4">
-          <% fire_number = review.rating %>
-          <% rating_fire = []%>
-          <% fire_number.times do  %>
-            <% rating_fire << '🔥' %>
-          <% end %>
-           <p>Rating: <%= rating_fire.join %></p>
-        </div>
+            <% fire_number = review.rating %>
+            <% rating_fire = []%>
+            <% fire_number.times do  %>
+              <% rating_fire << '🔥' %>
+            <% end %>
+            <p>Rating: <%= rating_fire.join %></p>
+          </div>
         <blockquote class="blockquote">
         <p>"<%= review.comment %>"</p>
         </blockquote>
         <footer class="blockquote-footer" class="text-right"><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></footer>
 
-          </div>
         <% end %>
-        </ul>
-    </div>
-  </div>
+      </div>
 </div>
 
 <%# <i class="fa-solid fa-fire-flame-curved"></i> %>

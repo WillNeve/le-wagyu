@@ -42,9 +42,13 @@ user.save
     )
 
     image_1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
-    # image_2 = URI.open(row[7])
-    # image_3 = URI.open(row[8])
+    image_2 = URI.open(row[7].gsub('“', '').gsub('”', ''))
+    image_3 = URI.open(row[8].gsub('“', '').gsub('”', ''))
+
     bbq.photos.attach(io: image_1, filename: "bbq_#{bbq.id}_1.png", content_type: "image/jpg")
+    bbq.photos.attach(io: image_2, filename: "bbq_#{bbq.id}_2.png", content_type: "image/jpg")
+    bbq.photos.attach(io: image_3, filename: "bbq_#{bbq.id}_3.png", content_type: "image/jpg")
+
     puts bbq.valid?
     puts "BBQ: #{bbq.id} has been created"
   end
