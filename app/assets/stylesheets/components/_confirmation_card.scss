@@ -1,0 +1,41 @@
+.confirmation_card {
+  overflow: hidden;
+  height: 200px;
+  width: 580px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.confirmation_card img {
+  height: 100%;
+  width: 200px;
+  object-fit: cover;
+}
+
+.confirmation_card h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.confirmation_card h3 {
+  font-size: 17px;
+  margin: 0;
+  margin-top: 24px;
+}
+
+.confirmation_card p {
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 14px;
+}
+
+.confirmation_card .confirmation_card-infos {
+  padding: 15px;
+}

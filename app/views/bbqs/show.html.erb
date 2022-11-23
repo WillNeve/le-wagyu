@@ -3,6 +3,7 @@
 
 
 
+
   <div class="bbq_card_show">
     <h2><%= @bbq.manufacturer%> - <%= @bbq.title%></h2>
     <div class="under-title-bar">
@@ -35,20 +36,18 @@
         <ul>
         <% @bbq.reviews.each do |review| %>
           <div class="rating-card" class="mt-4" class="p-4">
-            <blockquote class="blockquote">
-              <% rating_stars = [] %>
-              <% review.rating.times do %>
-                <% rating_stars << '<i class="fa-solid fa-fire-flame-curved"></i>' %>
-              <% end %>
-              <p>Rating: <%= rating_stars.join('').html_safe %></p>
-              <p><%= review.comment %></p>
-              <div class="text-right">
-                <footer class="blockquote-footer"><%= review.user.first_name %> <%= review.user.last_name %>, <cite><%= review.created_at %></cite></footer>
-              </div>
-            </blockquote>
+           <p>Rating: <%= rating_stars.join('🔥').html_safe %></p>
+        </div>
+        <blockquote class="blockquote">
+        <p>"<%= review.comment %>"</p>
+        </blockquote>
+        <footer class="blockquote-footer" class="text-right"><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></footer>
+
           </div>
         <% end %>
         </ul>
     </div>
   </div>
 </div>
+
+<%# <i class="fa-solid fa-fire-flame-curved"></i> %>

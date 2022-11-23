@@ -5,58 +5,60 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require 'faker'
+require 'csv'
+require 'open-uri'
 
-puts "Cleaning database"
-#Review.destroy_all
+# puts "Cleaning database"
+# Review.destroy_all
+# Bbq.destroy_all
+# User.destroy_all
 
-puts "Creating reviews"
+puts "Creating Users"
+
+puts "Creating BBQs"
 
 user_params = { first_name: "Bob", last_name: "Grills", username: "bobgyrlz",
                 email: "bob.grills@gmail.com", password: '123123', password_confirmation: '123123' }
 user = User.new(user_params)
 user.save
 
-# create_table "reviews", force: :cascade do |t|
-#   t.integer "rating"
-#   t.text "comment"
-#   t.bigint "user_id", null: false
-#   t.bigint "bbq_id", null: false
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["bbq_id"], name: "index_reviews_on_bbq_id"
-#   t.index ["user_id"], name: "index_reviews_on_user_id"
+
+  filepath = File.join(Rails.root, 'db', 'bbqseeds.csv')
+  user = User.first
+
+  CSV.foreach(filepath, headers: :first_row) do |row|
+    bbq = Bbq.create!(
+      price: row[2].gsub('“', '').gsub('”', '').to_f,
+      title: row[0].gsub('“', '').gsub('”', ''),
+      description: row[1].gsub('“', '').gsub('”', ''),
+      location: row[3].gsub('“', '').gsub('”', ''),
+      manufacturer: row[4].gsub('“', '').gsub('”', ''),
+      user: user
+      # fuel_type: row[9],
+      # cooking_area: row[10],
+      # power: row[11],
+      # weight: row[12],
+      # type: row[13]
+    )
+
+    image_1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
+    # image_2 = URI.open(row[7])
+    # image_3 = URI.open(row[8])
+    bbq.photos.attach(io: image_1, filename: "bbq_#{bbq.id}_1.png", content_type: "image/jpg")
+    puts bbq.valid?
+    puts "BBQ: #{bbq.id} has been created"
+  end
 # end
+#   puts "Creating Reviews"
+
 50.times do
   review = Review.create(
     comment: Faker::Restaurant.description,
     rating: rand(1..5),
-    user_id: user.id,
-    bbq_id: rand(1..15)
+    user_id: 1,
+    bbq_id: rand(1..12)
   )
   puts "Review for bbq: #{review.id} has been created"
-end
-
-# create_table "bbqs", force: :cascade do |t|
-#   t.float "price"
-#   t.string "title"
-#   t.text "description"
-#   t.string "location"
-#   t.string "manufacturer"
-#   t.bigint "user_id", null: false
-
-15.times do
-  bbq = Bbq.new(
-    price: rand(1..50),
-    title: Faker::Company.buzzword,
-    description: Faker::TvShows::BigBangTheory.quote,
-    location: Faker::Address.city,
-    manufacturer: Faker::Company.name,
-    user_id: user.id
-  )
-  bbq.save
-  puts bbq.valid?
-  puts "BBQ: #{bbq.id} has been created"
 end
 
 puts 'Completed'
