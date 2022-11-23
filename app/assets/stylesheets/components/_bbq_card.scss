@@ -7,6 +7,7 @@
   margin-top: 35px;
 }
 
+
 #bbq-card {
   display: block;
   width: 300px;
@@ -14,6 +15,7 @@
   align-items: center;
   text-decoration: none;
   color: black;
+
 
   h5 {
     font-weight: bold;
@@ -28,7 +30,6 @@
       transform: translateY(-1.7px);
     }
   }
-
 
 
   img {
@@ -63,7 +64,7 @@
     font-weight:bold;
     text-decoration: underline;
     margin-left: 3.5px;
-  line-height: 0.75em;
+    line-height: 0.75em;
   }
 }
 
