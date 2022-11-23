@@ -1,3 +1,5 @@
+require 'date'
+
 class ReviewsController < ApplicationController
   def new
     @review = Review.new
@@ -21,4 +23,5 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:comment, :rating)
   end
+
 end
