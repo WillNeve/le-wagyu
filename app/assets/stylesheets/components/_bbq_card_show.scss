@@ -1,6 +1,27 @@
 
-.bbq_card.show{
+.content-container {
+  display: grid;
+  grid-template-columns: 34% 66%;
+  grid-template-rows: 1fr;
+  gap: 40px;
+  margin-top: 50px;
 
+
+  .meta-container {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+  }
+
+  .booking-card{
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+  }
+  a {
+    width: fit-content;
+    height: fit-content;
+  }
 }
 
 .bbq-img-container{

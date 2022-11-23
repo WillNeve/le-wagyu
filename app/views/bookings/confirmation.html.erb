@@ -20,5 +20,6 @@
     </div>
   </div>
   <%= link_to 'Back to my bookings', '/bookings', class: 'btn btn-primary' %>
-  <%= link_to 'Show this booking', booking_path(@booking), class: 'btn btn-primary' %>
+  <%= link_to 'Write a review', new_bbq_review_path(@booking.bbq_id), class: 'btn btn-primary' %>
+  <%# <%= link_to 'Show this booking', booking_path(@booking), class: 'btn btn-primary' %>
 </div>
