@@ -23,6 +23,7 @@ class BbqsController < ApplicationController
 
   def show
     @bbq = Bbq.find(params[:id])
+    @booking = Booking.new
   end
 
   def new

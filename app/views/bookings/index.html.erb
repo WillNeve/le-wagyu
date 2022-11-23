@@ -15,5 +15,6 @@
         <h3><strong>Total:</strong> £<%= booking_duration * booking.bbq.price%></h3>
     </div>
   </div>
+  <%= link_to 'Write a review', new_bbq_review_path(booking.bbq_id), class: 'btn btn-primary mb-4' %>
   <% end %>
 </div>
