@@ -15,52 +15,68 @@ require 'open-uri'
 
 puts "Creating Users"
 
-puts "Creating BBQs"
+# always make bob grills 💖
 
 user_params = { first_name: "Bob", last_name: "Grills", username: "bobgyrlz",
                 email: "bob.grills@gmail.com", password: '123123', password_confirmation: '123123' }
 user = User.new(user_params)
 user.save
+puts "Bob Grills created 🔥"
 
+10.times do # lets make 10 different users for reviews and bbqs
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  username = "#{first_name}-#{last_name}"
+  password = '123123'
+  password_confirmation = password
+  email = "#{first_name}.#{last_name}@test.com"
+  user_params = { first_name:, last_name:, username:,
+                  email:, password:, password_confirmation: }
+  user = User.create(user_params)
+  puts "User: #{user.id} created"
+end
 
-  filepath = File.join(Rails.root, 'db', 'bbqseeds.csv')
-  user = User.first
+puts "Creating BBQs"
 
-  CSV.foreach(filepath, headers: :first_row) do |row|
-    bbq = Bbq.create!(
-      price: row[2].gsub('“', '').gsub('”', '').to_f,
-      title: row[0].gsub('“', '').gsub('”', ''),
-      description: row[1].gsub('“', '').gsub('”', ''),
-      location: row[14].gsub('“', '').gsub('”', ''),
-      manufacturer: row[4].gsub('“', '').gsub('”', ''),
-      user: user,
-      fuel_type: row[9].gsub('“', '').gsub('”', ''),
-      cooking_area: row[10].gsub('“', '').gsub('”', ''),
-      power: row[11].gsub('“', '').gsub('”', ''),
-      weight: row[12].gsub('“', '').gsub('”', ''),
-      style_type: row[13].gsub('“', '').gsub('”', ''),
-      address: row[3].gsub('“', '').gsub('”', '')
-    )
+filepath = File.join(Rails.root, 'db', 'bbqseeds.csv') # have to give path to csv from root of rails app
 
-    image_1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
-    image_2 = URI.open(row[7].gsub('“', '').gsub('”', ''))
-    image_3 = URI.open(row[8].gsub('“', '').gsub('”', ''))
+CSV.foreach(filepath, headers: :first_row) do |row|
+  user = User.find(rand(1..(User.all.length - 1))) # assigns a random user for each bbq listing
+  bbq = Bbq.create!(
+    price: row[2].gsub('“', '').gsub('”', '').to_f,
+    title: row[0].gsub('“', '').gsub('”', ''),
+    description: row[1].gsub('“', '').gsub('”', ''),
+    location: row[14].gsub('“', '').gsub('”', ''),
+    manufacturer: row[4].gsub('“', '').gsub('”', ''),
+    user:, # <-- when you have a variable the same name as the key and leave the value empty it automatically assigns it
+    fuel_type: row[9].gsub('“', '').gsub('”', ''),
+    cooking_area: row[10].gsub('“', '').gsub('”', ''),
+    power: row[11].gsub('“', '').gsub('”', ''),
+    weight: row[12].gsub('“', '').gsub('”', ''),
+    style_type: row[13].gsub('“', '').gsub('”', ''),
+    address: row[3].gsub('“', '').gsub('”', '')
+  )
 
-    bbq.photos.attach(io: image_1, filename: "bbq_#{bbq.id}_1.png", content_type: "image/jpg")
-    bbq.photos.attach(io: image_2, filename: "bbq_#{bbq.id}_2.png", content_type: "image/jpg")
-    bbq.photos.attach(io: image_3, filename: "bbq_#{bbq.id}_3.png", content_type: "image/jpg")
+  image1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
+  image2 = URI.open(row[7].gsub('“', '').gsub('”', ''))
+  image3 = URI.open(row[8].gsub('“', '').gsub('”', ''))
 
-    puts bbq.valid?
-    puts "BBQ: #{bbq.id} has been created"
-  end
-# end
-#   puts "Creating Reviews"
+  bbq.photos.attach(io: image1, filename: "bbq_#{bbq.id}_1.png", content_type: "image/jpg")
+  bbq.photos.attach(io: image2, filename: "bbq_#{bbq.id}_2.png", content_type: "image/jpg")
+  bbq.photos.attach(io: image3, filename: "bbq_#{bbq.id}_3.png", content_type: "image/jpg")
+
+  puts bbq.valid?
+  puts "BBQ: #{bbq.id} has been created"
+end
+
+puts "Creating Reviews"
 
 50.times do
+  user = User.find(rand(1..(User.all.length - 1))) # assigns a random user for each review
   review = Review.create(
     comment: Faker::Restaurant.description,
     rating: rand(1..5),
-    user_id: 1,
+    user:,
     bbq_id: rand(1..16)
   )
   puts "Review for bbq: #{review.id} has been created"

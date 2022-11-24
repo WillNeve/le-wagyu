@@ -9,6 +9,6 @@
   <% brands = %w[BBQ4U Weber Cobb Napoleon Clarstein Cuisinart] %>
   <%= f.input :manufacturer, collection: brands%>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= f.submit 'Create BBQ', class: 'red-button' %>
   <% end %>
 </div>
