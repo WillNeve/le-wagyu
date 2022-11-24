@@ -25,6 +25,12 @@ class BbqsController < ApplicationController
     else
       @bbqs = Bbq.all
     end
+    @markers = @bbqs.geocoded.map do |bbq|
+      {
+        lat: bbq.latitude,
+        lng: bbq.longitude
+      }
+    end
   end
 
   def show
