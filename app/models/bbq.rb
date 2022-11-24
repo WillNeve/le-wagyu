@@ -11,6 +11,13 @@ class Bbq < ApplicationRecord
   before_save :photos_check
   # validate minimum 2 photos
 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_model,
+                  against: [:title, :model],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   private
 
   def photos_check

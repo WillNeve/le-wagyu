@@ -14,7 +14,7 @@ class Booking < ApplicationRecord
 
   private
 
-  def start_time
-    self.my_related_model.start
-  end
+  # def start_time
+  #   self.my_related_model.start
+  # end
 end
