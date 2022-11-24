@@ -1,13 +1,13 @@
 .filter-bar {
   // border: 2px solid orange;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   column-gap: 15px;
   p {
     margin: 0;
-    font-weight: 600;
-    color: rgba($color: black, $alpha: 0.8);
+    font-weight: 500;
+    color: rgba($color: black, $alpha: 0.7);
   }
   .filters {
     display: flex;
@@ -15,7 +15,7 @@
     align-items: center;
     column-gap: 10px;
     a {
-      background: $wagyu-red;
+      background: #B6BABE;
       color: white;
       opacity: 0.8;
       font-weight: 500;
