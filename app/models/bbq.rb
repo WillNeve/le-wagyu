@@ -12,8 +12,8 @@ class Bbq < ApplicationRecord
   # validate minimum 2 photos
 
   include PgSearch::Model
-  pg_search_scope :search_by_title_and_model,
-                  against: [:title, :model],
+  pg_search_scope :search_by_title_model_location,
+                  against: %i[title model location],
                   using: {
                     tsearch: { prefix: true }
                   }
