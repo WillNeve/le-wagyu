@@ -33,12 +33,12 @@ user.save
       description: row[1].gsub('“', '').gsub('”', ''),
       location: row[3].gsub('“', '').gsub('”', ''),
       manufacturer: row[4].gsub('“', '').gsub('”', ''),
-      user: user
-      # fuel_type: row[9],
-      # cooking_area: row[10],
-      # power: row[11],
-      # weight: row[12],
-      # type: row[13]
+      user: user,
+      fuel_type: row[9].gsub('“', '').gsub('”', ''),
+      cooking_area: row[10].gsub('“', '').gsub('”', ''),
+      power: row[11].gsub('“', '').gsub('”', ''),
+      weight: row[12].gsub('“', '').gsub('”', ''),
+      style_type: row[13].gsub('“', '').gsub('”', '')
     )
 
     image_1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
@@ -60,7 +60,7 @@ user.save
     comment: Faker::Restaurant.description,
     rating: rand(1..5),
     user_id: 1,
-    bbq_id: rand(1..12)
+    bbq_id: rand(1..16)
   )
   puts "Review for bbq: #{review.id} has been created"
 end

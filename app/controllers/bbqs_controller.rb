@@ -1,7 +1,6 @@
 class BbqsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-
     @index = true # this passes a variable to confirm to the navbar we are on index
                   # so that it can show us the filter by bar
     if params[:filter]
