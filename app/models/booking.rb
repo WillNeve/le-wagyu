@@ -11,4 +11,10 @@ class Booking < ApplicationRecord
   #     errors.add(:end_date 'Sorry bruv, get your dates right')
   #   end
   # end
+
+  private
+
+  def start_time
+    self.my_related_model.start
+  end
 end
