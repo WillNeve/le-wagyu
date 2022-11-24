@@ -38,7 +38,8 @@ user.save
       cooking_area: row[10].gsub('“', '').gsub('”', ''),
       power: row[11].gsub('“', '').gsub('”', ''),
       weight: row[12].gsub('“', '').gsub('”', ''),
-      style_type: row[13].gsub('“', '').gsub('”', '')
+      style_type: row[13].gsub('“', '').gsub('”', ''),
+      address: row[14].gsub('“', '').gsub('”', '')
     )
 
     image_1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
