@@ -21,7 +21,8 @@ class BbqsController < ApplicationController
     @markers = @bbqs.geocoded.map do |bbq|
       {
         lat: bbq.latitude,
-        lng: bbq.longitude
+        lng: bbq.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {bbq: bbq})
       }
     end
   end
