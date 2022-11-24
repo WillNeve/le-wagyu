@@ -5,7 +5,7 @@
   margin-bottom: 20px;
   border-radius: 10px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
 }
@@ -19,13 +19,12 @@
 .confirmation_card h2 {
   font-size: 20px;
   font-weight: bold;
-  margin: 0;
+  margin-top: 5px;
 }
 
 .confirmation_card h3 {
   font-size: 17px;
-  margin: 0;
-  margin-top: 24px;
+  margin-top: 8px;
 }
 
 .confirmation_card p {
