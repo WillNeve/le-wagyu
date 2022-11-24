@@ -6,16 +6,17 @@
         <h2 class='m-0 p-0'>Le Wagyu</h2>
       <% end %>
 
-    <% if @index %>
-    <div class="nav">
-      <%= form_with url: bbqs_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "td form-control rounded",
-        placeholder: "Find a grill"%>
-      <%= submit_tag "Search", class: "btn btn-danger" %>
-      <% end %>
-    </div>
+      <% if @index %>
+      <div class="tb">
+        <%= form_with url: bbqs_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "td form-control rounded",
+          placeholder: "Find a grill"%>
+        <%= submit_tag "Search", class: "btn btn-danger" %>
+        <% end %>
+      </div>
+
       <div class="filter-bar">
         <p>Filter By:</p>
         <% class1 = ''; class2 = ''; class3 = '' %>
