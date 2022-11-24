@@ -7,6 +7,15 @@
       <% end %>
 
     <% if @index %>
+    <div class="nav">
+      <%= form_with url: bbqs_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "td form-control rounded",
+        placeholder: "Find a grill"%>
+      <%= submit_tag "Search", class: "btn btn-danger" %>
+      <% end %>
+    </div>
       <div class="filter-bar">
         <p>Filter By:</p>
         <% class1 = ''; class2 = ''; class3 = '' %>
@@ -34,10 +43,10 @@
         <ul class="navbar-nav me-auto">
           <% if user_signed_in? %>
             <li class="nav-item active">
-              <%= link_to "Home", root_path , class: "nav-link" %>
+              <%# <%= link_to "Home", root_path , class: "nav-link" %>
             </li>
             <li class="nav-item active">
-              <%= link_to "List your BBQ", new_bbq_path , class: "nav-link" %>
+              <%= link_to "List your BBQ", new_bbq_path , class: "nav-link btn btn-danger" %>
             </li>
             <li class="nav-item dropdown">
               <% if current_user.avatar.key %>

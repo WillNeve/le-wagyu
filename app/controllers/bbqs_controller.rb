@@ -15,6 +15,13 @@ class BbqsController < ApplicationController
         @bbqs = Bbq.order('price DESC')
         @filter = 'priceD'
       end
+    elsif params[:query].present?
+      sql_query = <<~SQL
+        bbqs.title @@ :query
+        OR bbqs.manufacturer @@ :query
+        OR bbqs.location @@ :query
+      SQL
+      @bbqs = Bbq.where(sql_query, query: "%#{params[:query]}%")
     else
       @bbqs = Bbq.all
     end
