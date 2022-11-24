@@ -31,6 +31,12 @@
         <%= f.input :end_date %>
         <%= f.submit 'Book me !', class: 'btn btn-danger' %>
       <% end %>
+
+      <div style="width: auto; height: auto;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
     </div>
     <div class="description">
       <h2>Description:</h2>

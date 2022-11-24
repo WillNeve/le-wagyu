@@ -31,7 +31,7 @@ user.save
       price: row[2].gsub('“', '').gsub('”', '').to_f,
       title: row[0].gsub('“', '').gsub('”', ''),
       description: row[1].gsub('“', '').gsub('”', ''),
-      location: row[3].gsub('“', '').gsub('”', ''),
+      location: row[14].gsub('“', '').gsub('”', ''),
       manufacturer: row[4].gsub('“', '').gsub('”', ''),
       user: user,
       fuel_type: row[9].gsub('“', '').gsub('”', ''),
@@ -39,7 +39,7 @@ user.save
       power: row[11].gsub('“', '').gsub('”', ''),
       weight: row[12].gsub('“', '').gsub('”', ''),
       style_type: row[13].gsub('“', '').gsub('”', ''),
-      address: row[14].gsub('“', '').gsub('”', '')
+      address: row[3].gsub('“', '').gsub('”', '')
     )
 
     image_1 = URI.open(row[6].gsub('“', '').gsub('”', ''))
