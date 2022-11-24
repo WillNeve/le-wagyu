@@ -1,8 +1,5 @@
 
 <div class="container">
-
-
-
   <div class="bbq_card_show">
     <h2><%= @bbq.manufacturer%> - <%= @bbq.title%></h2>
     <div class="under-title-bar">
@@ -19,37 +16,43 @@
       <span class="text_location text-muted"><u><%= @bbq.location%></u></span>
     </div>
   </div>
-     <div class="bbq-img-container">
-          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg"  class="img1" alt="">
-          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg" class="img2" alt="">
-          <img src="https://www.robertdyas.co.uk/media/magefan_blog/bbq-checklist.jpg" class="img3" alt="">
-    </div>
-  <div class="meta-container">
-    <div class="booking-card">
-      <%= link_to 'Book this BBQ', new_bbq_booking_path(@bbq), class: 'btn btn-primary' %>
-    </div>
 
-    <div class="review-card">
-      <h2>description</h2>
+     <div class="bbq-img-container">
+          <img src="<%=cl_image_path @bbq.photos[0].key %>"  class="img1" alt="">
+          <img src="<%=cl_image_path @bbq.photos[1].key %>"  class="img2" alt="">
+          <img src="<%=cl_image_path @bbq.photos[2].key %>"  class="img3" alt="">
+    </div>
+  <div class="content-container">
+    <div class="booking-card">
+        <h2> Book it now! </h2>
+      <%# <%= link_to 'Book this BBQ', new_bbq_booking_path(@bbq), class: 'btn btn-primary' %>
+      <%= simple_form_for [@bbq, @booking] do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <div class="description">
+      <h2>Description:</h2>
+        <p><%= @bbq.description %></p>
       <h2>Reviews:</h2>
-      <%= link_to 'Write a review', new_bbq_review_path(@bbq), class: 'btn btn-primary' %>
-        <ul>
-        <% @bbq.reviews.each do |review| %>
-          <div class="rating-card" class="mt-4" class="p-4">
-            <blockquote class="blockquote">
-              <% rating_stars = [] %>
-              <% review.rating.times do %>
-                <% rating_stars << '<i class="fa-solid fa-fire-flame-curved"></i>' %>
-              <% end %>
-              <p>Rating: <%= rating_stars.join('').html_safe %></p>
-              <p><%= review.comment %></p>
-              <div class="text-right">
-                <footer class="blockquote-footer"><%= review.user.first_name %> <%= review.user.last_name %>, <cite><%= review.created_at %></cite></footer>
-              </div>
-            </blockquote>
+      <% @bbq.reviews.each do |review| %>
+          <div class="rating-card" class="mt-1" class="p-4">
+            <% fire_number = review.rating %>
+            <% rating_fire = []%>
+            <% fire_number.times do  %>
+              <% rating_fire << '🔥' %>
+            <% end %>
+            <p>Rating: <%= rating_fire.join %></p>
           </div>
+        <blockquote id="blockquote">
+          <p>"<%= review.comment %>"</p>
+        </blockquote>
+        <footer class="blockquote-footer" class="text-right"><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></footer>
+
         <% end %>
-        </ul>
     </div>
   </div>
 </div>
+
+<%# <i class="fa-solid fa-fire-flame-curved"></i> %>
