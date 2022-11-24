@@ -32,6 +32,11 @@ gem "jbuilder"
 gem "devise"
 
 gem "cloudinary"
+
+# Simple Calendar is designed to do one thing really really well: render a calendar.
+gem "simple_calendar", "~> 2.4"
+
+gem 'rails-i18n'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
