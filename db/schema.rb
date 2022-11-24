@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_172159) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_121805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_172159) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fuel_type"
+    t.string "cooking_area"
+    t.string "power"
+    t.string "weight"
+    t.string "style_type"
     t.index ["user_id"], name: "index_bbqs_on_user_id"
   end
 
