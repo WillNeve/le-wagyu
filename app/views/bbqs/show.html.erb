@@ -63,7 +63,7 @@
         <blockquote id="blockquote">
           <p>"<%= review.comment %>"</p>
         </blockquote>
-        <footer class="blockquote-footer" class="text-right"><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></footer>
+        <footer class="blockquote-footer d-flex align-items-center" class="text-right"><img class='avatar avatar-emph mx-2' src="https://b.fssta.com/uploads/application/soccer/headshots/885.vresize.350.350.medium.14.png" alt=""><p class='m-0 p-0'><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></p></footer>
 
         <% end %>
     </div>
