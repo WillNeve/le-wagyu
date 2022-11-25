@@ -30,7 +30,7 @@ class BbqsController < ApplicationController
         lat: bbq.latitude,
         lng: bbq.longitude,
         info_window: render_to_string(partial: "info_window", locals: { bbq: bbq }),
-        image_url: helpers.asset_url("marker-bbq")
+        image_url: helpers.asset_url("marker-bbq.png")
       }
     end
   end
@@ -42,7 +42,7 @@ class BbqsController < ApplicationController
       lat: @bbq.latitude,
       lng: @bbq.longitude,
       info_window: render_to_string(partial: "info_window", locals: { bbq: @bbq }),
-      image_url: helpers.asset_url("marker-bbq")
+      image_url: helpers.asset_url("marker-bbq.png")
     }]
   end
 
