@@ -6,9 +6,6 @@
   gap: 15px;
   margin-top: 35px;
 
-  h1{
-    font-family:'Courier New', Courier, monospace
-  }
 }
 
 
@@ -27,8 +24,9 @@
   }
 
   h6 {
-    font-size: medium;
+    font-size: 15px;
     opacity: .5;
+
     i {
       margin-right: 5px;
       font-size: 0.8rem;
@@ -59,8 +57,9 @@
   display: flex;
   margin-top: 2px;
   margin-right: 3.5px;
+
   .p{
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 

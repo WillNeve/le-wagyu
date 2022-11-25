@@ -8,12 +8,12 @@
 
   <% if @index %>
 
-    <div class="tb">
+    <div class=" container-sb tb" >
     <%= form_with url: bbqs_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "search-field form-control rounded",
-      placeholder: "Find a grill.."%>
+      class: "search-field rounded",
+      placeholder: "Find a grill..."%>
       <button type="submit" class="search-button">
          <i class='fa-solid fa-magnifying-glass'></i>
       </button>
@@ -38,7 +38,7 @@
             <% if current_user.avatar.key %>
               <% avatar_path = current_user.avatar.key.to_s %>
               <i class=" hamburger-drop fa-solid fa-bars"></i>
-              <%= cl_image_tag avatar_path, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+              <%= cl_image_tag avatar_path, class: "avatar dropdown-toggle", gravity: :face, crop: :thumb, id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
             <% else %>
               <i class="hamburger-drop fa-solid fa-bars"></i>
               <%= image_tag "https://cdn1.iconfinder.com/data/icons/random-115/24/person-1024.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

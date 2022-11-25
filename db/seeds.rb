@@ -13,13 +13,15 @@ require 'open-uri'
 # Bbq.destroy_all
 # User.destroy_all
 
-puts "Creating Users"
+# puts "Creating Users"
 
-# always make bob grills 💖
+# # always make bob grills 💖
 
 user_params = { first_name: "Bob", last_name: "Grills", username: "bobgyrlz",
                 email: "bob.grills@gmail.com", password: '123123', password_confirmation: '123123' }
 user = User.new(user_params)
+avatar = URI.open('https://ucarecdn.com/d3cee760-b00b-42d6-9a39-bce3390f0862/-/crop/562x562/219,0/-/preview/-/progressive/yes/-/format/auto/-/scale_crop/900x900/')
+user.avatar.attach(io: avatar, filename: "bob.jpg", content_type: "image/jpg")
 user.save
 puts "Bob Grills created 🔥"
 
@@ -70,14 +72,15 @@ CSV.foreach(filepath, headers: :first_row) do |row|
 end
 
 puts "Creating Reviews"
-
-50.times do
-  user = User.find(rand(1..(User.all.length - 1))) # assigns a random user for each review
+filepath2 = File.join(Rails.root, 'db', 'reviewseeds.csv') # have to give path to csv from root of rails app
+CSV.foreach(filepath2, headers: :first_row) do |row|
+  user = User.find(rand(1..(User.all.length - 1))) # assigns a random user for each bbq listing
+  bbq = Bbq.find(rand(1..(Bbq.all.length - 1)))
   review = Review.create(
-    comment: Faker::Restaurant.description,
-    rating: rand(1..5),
+    comment: row[3].gsub('“', '').gsub('”', ''),
+    rating: row[0].gsub('“', '').gsub('”', ''),
     user:,
-    bbq_id: rand(1..16)
+    bbq:,
   )
   puts "Review for bbq: #{review.id} has been created"
 end
