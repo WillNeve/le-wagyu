@@ -38,12 +38,12 @@ class BbqsController < ApplicationController
   def show
     @bbq = Bbq.find(params[:id])
     @booking = Booking.new
-    @markers = {
-              lat: @bbq.latitude,
-              lng: @bbq.longitude,
-              info_window: render_to_string(partial: "info_window", locals: { bbq: @bbq }),
-              image_url: helpers.asset_url("marker-bbq")
-  }
+    @marker = [{
+      lat: @bbq.latitude,
+      lng: @bbq.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { bbq: @bbq }),
+      image_url: helpers.asset_url("marker-bbq")
+    }]
   end
 
   def new
