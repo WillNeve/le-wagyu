@@ -13,10 +13,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    column-gap: 10px;
+    column-gap: 60px;
     a {
-      background: #B6BABE;
-      color: white;
+      color: rgba($color: black, $alpha: 0.7);
       opacity: 0.8;
       font-weight: 500;
       padding: 3px 7px;

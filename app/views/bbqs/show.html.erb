@@ -13,7 +13,8 @@
             <% bbq_ratings = (bbq_ratings.to_f / @bbq.reviews.length).round(1)%>
         <% end %>
       <span >★ <%= bbq_ratings%>  ·</span>
-      <span class="text_location text-muted"><u><%= @bbq.location%></u></span>
+      <span class="text_location text-muted"><u><%= @bbq.address%></u>  ·</span>
+      <span class="text_location text-muted"><%= @bbq.location%></span>
     </div>
   </div>
 
@@ -24,7 +25,7 @@
     </div>
   <div class="content-container">
     <div class="booking-card">
-        <h2> Book it now! </h2>
+        <h3> Book it now! </h3>
       <%# <%= link_to 'Book this BBQ', new_bbq_booking_path(@bbq), class: 'btn btn-primary' %>
       <%= simple_form_for [@bbq, @booking] do |f| %>
         <%= f.input :start_date %>
@@ -40,17 +41,17 @@
 
     </div>
     <div class="description">
-      <h2>Description:</h2>
+      <h3>Description:</h3>
+
         <p><%= @bbq.description %></p>
         <p>Fuel Type: <%= @bbq.fuel_type %></p>
         <p>Cooking Area: <%= @bbq.cooking_area%></p>
         <p>Power: <%= @bbq.power %></p>
         <p>Weight: <%= @bbq.weight %></p>
         <p>Style: <%= @bbq.style_type %></p>
-        <p>Address: <%= @bbq.address %></p>
 
 
-      <h2>Reviews:</h2>
+      <h3>Reviews:</h3>
       <% @bbq.reviews.each do |review| %>
           <div class="rating-card" class="mt-1" class="p-4">
             <% fire_number = review.rating %>
