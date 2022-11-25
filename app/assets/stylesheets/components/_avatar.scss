@@ -4,6 +4,10 @@
   object-fit: cover;
   border-radius: 50%;
 }
+.avatar-emph {
+  border: 1px solid white;
+  box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.1);
+}
 .avatar-large {
   width: 56px;
   height: 56px;
