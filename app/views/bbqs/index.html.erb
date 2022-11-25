@@ -5,12 +5,15 @@
 
   <div class="bbq-container">
     <% @bbqs.each do |bbq| %>
+
     <a id="bbq-card" href='bbqs/<%=bbq.id%>'>
+    <%# -------------------------------------------BUTTON------------------------------- %>
+    <%# ----------------------------------------------END BUTTON------------------------------------- %>
       <% if bbq.photos[0] %>
-        <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
-      <% else %>
-        <img src="https://cdn.shopify.com/s/files/1/0208/7750/8672/products/XS6073_LS_1600_1_opt_1024x1024@2x.jpg?v=1649448712" alt="">
-      <% end %>
+          <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
+        <% else %>
+          <img src="https://cdn.shopify.com/s/files/1/0208/7750/8672/products/XS6073_LS_1600_1_opt_1024x1024@2x.jpg?v=1649448712" alt="">
+        <% end %>
       <div class="meta">
       <%# shorten manufacturer to 20 chars %>
       <% if bbq.manufacturer.length > 20 %>
