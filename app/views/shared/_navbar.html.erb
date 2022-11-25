@@ -51,8 +51,10 @@
             <li class="nav-item dropdown active">
               <% if current_user.avatar.key %>
                 <% avatar_path = current_user.avatar.key.to_s %>
+                <i class=" hamburger-drop fa-solid fa-bars"></i>
                 <%= cl_image_tag avatar_path, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
               <% else %>
+                <i class="hamburger-drop fa-solid fa-bars"></i>
                 <%= image_tag "https://cdn1.iconfinder.com/data/icons/random-115/24/person-1024.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
