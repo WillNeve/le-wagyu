@@ -1,16 +1,19 @@
-<div class="container">
+<div class="container ">
     <% if user_signed_in? %>
       <h1 >Hey <%= current_user.first_name.downcase.capitalize %>, looking for a <em class='hot'>hot</em> date?</h1>
     <% end %>
 
   <div class="bbq-container">
     <% @bbqs.each do |bbq| %>
+
     <a id="bbq-card" href='bbqs/<%=bbq.id%>'>
+    <%# -------------------------------------------BUTTON------------------------------- %>
+    <%# ----------------------------------------------END BUTTON------------------------------------- %>
       <% if bbq.photos[0] %>
-        <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
-      <% else %>
-        <img src="https://cdn.shopify.com/s/files/1/0208/7750/8672/products/XS6073_LS_1600_1_opt_1024x1024@2x.jpg?v=1649448712" alt="">
-      <% end %>
+          <img src='<%= cl_image_path bbq.photos[0].key%>' alt="bbq-picture">
+        <% else %>
+          <img src="https://cdn.shopify.com/s/files/1/0208/7750/8672/products/XS6073_LS_1600_1_opt_1024x1024@2x.jpg?v=1649448712" alt="">
+        <% end %>
       <div class="meta">
       <%# shorten manufacturer to 20 chars %>
       <% if bbq.manufacturer.length > 20 %>
@@ -35,7 +38,7 @@
 
         <div class="second_element mt-0">
           <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title.capitalize%></h6>
-          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.location.capitalize %></h6>
+          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.address.capitalize %></h6>
           <p>£<%= bbq.price %><em class='soft-text'>/day</em></p>
         </div>
 

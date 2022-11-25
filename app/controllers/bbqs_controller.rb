@@ -38,12 +38,12 @@ class BbqsController < ApplicationController
   def show
     @bbq = Bbq.find(params[:id])
     @booking = Booking.new
-    @markers = {
-              lat: @bbq.latitude,
-              lng: @bbq.longitude,
-              info_window: render_to_string(partial: "info_window", locals: { bbq: @bbq }),
-              image_url: helpers.asset_url("marker-bbq")
-  }
+    @marker = [{
+      lat: @bbq.latitude,
+      lng: @bbq.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { bbq: @bbq }),
+      image_url: helpers.asset_url("marker-bbq")
+    }]
   end
 
   def new
@@ -70,6 +70,12 @@ class BbqsController < ApplicationController
   end
 
   private
+
+  def like
+    @bbq = Bbq.find(params[:id])
+    Like.create(user_id: current_user.id, bbq_id: @bbq.id)
+    redirect_to bbq_path(@bbq)
+  end
 
   def bbq_params
     params.require(:bbq).permit(:title, :description, :price, :manufacturer, :location, photos: [])
