@@ -20,6 +20,8 @@ puts "Creating Users"
 user_params = { first_name: "Bob", last_name: "Grills", username: "bobgyrlz",
                 email: "bob.grills@gmail.com", password: '123123', password_confirmation: '123123' }
 user = User.new(user_params)
+avatar = URI.open('https://ucarecdn.com/d3cee760-b00b-42d6-9a39-bce3390f0862/-/crop/562x562/219,0/-/preview/-/progressive/yes/-/format/auto/-/scale_crop/900x900/')
+user.avatar.attach(io: avatar, filename: "bob.jpg", content_type: "image/jpg")
 user.save
 puts "Bob Grills created 🔥"
 
