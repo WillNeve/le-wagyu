@@ -62,25 +62,27 @@
             <p>Weight: <%= @bbq.weight %></p>
             <i class="fa-solid fa-bolt-lightning"></i>
             <p>Fuel Type: <%= @bbq.fuel_type %></p>
-
         </div>
 
-      <h3>Reviews:</h3>
-      <% @bbq.reviews.each do |review| %>
-          <div class="rating-card" class="mt-1" class="p-4">
-            <% fire_number = review.rating %>
-            <% rating_fire = []%>
-            <% fire_number.times do  %>
-              <% rating_fire << '🔥' %>
-            <% end %>
-            <p class="float-right">Rating: <%= rating_fire.join %></p>
+      <div class='reviews'>
+      <h3 class='mb-3'>Reviews:</h3>
+        <% @bbq.reviews.each do |review| %>
+            <div class="rating-card" class="mt-1" class="p-4">
+              <% fire_number = review.rating %>
+              <% rating_fire = []%>
+              <% fire_number.times do  %>
+                <% rating_fire << '🔥' %>
+              <% end %>
+            <p class='rating-info'>Rating: <%= rating_fire.join %></p>
+            </div>
+          <div class="blockquote">
+            <p class='comment'>"<%= review.comment %>"</p>
+            <div class="user-info text-muted" class="text-right"><p class='m-0 p-0'><img class='avatar avatar-emph' src="https://b.fssta.com/uploads/application/soccer/headshots/885.vresize.350.350.medium.14.png" alt=""><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></p>
+            </div>
           </div>
-        <blockquote id="blockquote">
-          <p>"<%= review.comment %>"</p>
-        </blockquote>
-        <footer class="blockquote-footer d-flex align-items-center" class="text-right"><img class='avatar avatar-emph mx-2' src="https://b.fssta.com/uploads/application/soccer/headshots/885.vresize.350.350.medium.14.png" alt=""><p class='m-0 p-0'><%= review.user.first_name %> <%= review.user.last_name %>, <%= review.created_at.strftime("%d/%m/%Y") %></p></footer>
 
-        <% end %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
