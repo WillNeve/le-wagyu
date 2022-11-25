@@ -41,14 +41,28 @@
     </div>
     <div class="description">
       <h2>Description:</h2>
-        <p><%= @bbq.description %></p>
-        <p>Fuel Type: <%= @bbq.fuel_type %></p>
-        <p>Cooking Area: <%= @bbq.cooking_area%></p>
-        <p>Power: <%= @bbq.power %></p>
-        <p>Weight: <%= @bbq.weight %></p>
-        <p>Style: <%= @bbq.style_type %></p>
-        <p>Address: <%= @bbq.address %></p>
 
+        <div class="description-container">
+          <%# <i class="fa-regular fa-message"></i> %>
+          <div class="desc">
+            <p><%= @bbq.description %></p>
+          </div>
+            <i class="fa-solid fa-location-dot"></i>
+            <p>Address: <%= @bbq.location %></p>
+            <i class="fa-solid fa-fire-burner"></i>
+            <p>Cooking Area: <%= @bbq.cooking_area%></p>
+            <i class="fa-regular fa-map"></i>
+            <p>Borough: <%= @bbq.address %></p>
+            <i class="fa-solid fa-plug-circle-bolt"></i>
+            <p>Power: <%= @bbq.power %></p>
+            <i class="fa-regular fa-hand-point-right"></i>
+            <p>Style: <%= @bbq.style_type %></p>
+            <i class="fa-solid fa-weight-hanging"></i>
+            <p>Weight: <%= @bbq.weight %></p>
+            <i class="fa-solid fa-bolt-lightning"></i>
+            <p>Fuel Type: <%= @bbq.fuel_type %></p>
+
+        </div>
 
       <h2>Reviews:</h2>
       <% @bbq.reviews.each do |review| %>
