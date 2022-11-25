@@ -37,8 +37,13 @@
         </div>
 
         <div class="second_element mt-0">
-          <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title.capitalize%></h6>
-          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.location.capitalize %></h6>
+          <% if bbq.title.length > 30 %>
+            <% title = bbq.title.first(30).capitalize + "..."%>
+          <% else  %>
+            <% title=bbq.title.capitalize%>
+          <% end %>
+          <h6 class="card-subtitle mb-2 text-muted"><%= title %></h6>
+          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.address.capitalize %></h6>
           <p>£<%= bbq.price %><em class='soft-text'>/day</em></p>
         </div>
 
