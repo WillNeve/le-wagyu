@@ -71,6 +71,12 @@ class BbqsController < ApplicationController
 
   private
 
+  def like
+    @bbq = Bbq.find(params[:id])
+    Like.create(user_id: current_user.id, bbq_id: @bbq.id)
+    redirect_to bbq_path(@bbq)
+  end
+
   def bbq_params
     params.require(:bbq).permit(:title, :description, :price, :manufacturer, :location, photos: [])
   end
