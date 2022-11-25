@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
     <% if user_signed_in? %>
       <h1 >Hey <%= current_user.first_name.downcase.capitalize %>, looking for a <em class='hot'>hot</em> date?</h1>
     <% end %>
@@ -38,7 +38,7 @@
 
         <div class="second_element mt-0">
           <h6 class="card-subtitle mb-2 text-muted"><%= bbq.title.capitalize%></h6>
-          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.location.capitalize %></h6>
+          <h6 class= "text-muted"><i class="fa-solid fa-location-pin"></i><%= bbq.address.capitalize %></h6>
           <p>£<%= bbq.price %><em class='soft-text'>/day</em></p>
         </div>
 
